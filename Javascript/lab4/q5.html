@@ -1,0 +1,26 @@
+<html>
+  <head>
+        <title>Add program</title>
+        <script >
+             
+            function square()
+                {
+                        var number1 = parseInt(document.getElementById("value3").value);
+                        var Answer = document.getElementById("answer");
+                        Answer.value = number1 * number1;
+                }
+            
+				
+        </script>
+  </head>
+  <body>	     
+      <p>Finding th squre of number</p>
+      <input type="text" id="value3" name="value3" value="" placeholder="Enter Number"/>
+	   <br>
+        <input type="button" name="Sumbit" value="Square" onclick="square()"/>
+      <br>
+      Answer = <input type="text" id="answer" name="answer" value=""/>
+      
+      
+  </body>
+</html>
