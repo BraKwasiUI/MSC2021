@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+   <body>
+      <script language = "vbscript" type = "text/vbscript">
+         Dim Var1
+         Dim Var2
+         
+         Call add()
+         Function add()
+            Var1 = 10
+            Var2 = 15
+            Dim Var3
+            Var3 = Var1 + Var2
+            Msgbox Var3 'Displays 25, the sum of two values.
+         End Function
+
+         Msgbox Var1   ' Displays 10 as Var1 is declared at Script level
+         Msgbox Var2   ' Displays 15 as Var2 is declared at Script level
+         Msgbox Var3   ' Var3 has No Scope outside the procedure. Prints Empty
+      </script>
+   </body>
+</html>
