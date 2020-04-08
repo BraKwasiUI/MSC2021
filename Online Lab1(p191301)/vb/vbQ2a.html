@@ -1,0 +1,30 @@
+<html>
+<head>
+<meta http-equiv="x-ua-compatible" content="IE=10">
+<title>Range and Count</title>
+
+<script type="text/vbscript">
+dim num
+num = Cint(InputBox("Enter the No "))
+document.write("<br>")
+
+If num < 1 OR num > 50 Then
+ document.writeln("Outside Range")
+Else
+For i = 1 to num
+    document.write( i & "<br>")
+Next
+End if
+
+document.write("<br>")
+
+
+</script>
+
+</head>
+
+<body>
+
+
+</body>
+</html>

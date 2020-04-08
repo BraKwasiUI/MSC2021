@@ -1,0 +1,7 @@
+<!DOCTYPE Student[
+<!ELEMENT student (name,age,program,country)>
+<!ATTLIST student regno CDATA #REQUIRED>
+<!ELEMENT age (#PCDATA)>
+<!ELEMENT program (#PCDATA)>
+<!ELEMENT country (#PCDATA)>
+]>
