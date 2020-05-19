@@ -161,7 +161,7 @@ ul.topnav li a.title {
 
 <ul class="topnav">
 
-   <li ><a class="active" href="#about">Log Out</a></li>
+   <li ><a class="active" href="logout.jsp">Log Out</a></li>
    <li><a href="#news">Search Product</a></li>
   <li><a href="View.jsp">View Product</a></li>
   <li><a class="active" href="AddPro.jsp">Add Products</a></li>
@@ -208,7 +208,7 @@ ul.topnav li a.title {
       
       <tr>
       <td>
-      <button>Submit</button>
+      <button>Add Product</button>
      </td> 
       </tr>
      </table>

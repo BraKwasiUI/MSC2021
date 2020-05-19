@@ -1,9 +1,22 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
 <title>Home</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
+
+a.homelink{
+  background-color: #43A047;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+
 body {margin: 0;}
 li {
   border-right: 1px solid #bbb;
@@ -68,10 +81,17 @@ ul.topnav li a.title {
 </head>
 <body>
 
+<%
+    if ((session.getAttribute("userid") == null) || (session.getAttribute("userid") == "")) {
+%>
+You are not logged in<br/>
+<a href="index.jsp">Please Login</a>
+<%} else {
+%>
 <ul class="topnav">
 
-   <li ><a class="active" href="#about">Log Out</a></li>
-   <li><a href="#news">Search Product</a></li>
+   <li ><a class="active" href="logout.jsp">Log Out</a></li>
+   <li><a href="searchProduct.jsp">Search Product</a></li>
   <li><a href="View.jsp">View Product</a></li>
   <li><a href="AddPro.jsp">Add Products</a></li>
   <li><a class="active" href="home.jsp">Home</a></li>
@@ -81,11 +101,20 @@ ul.topnav li a.title {
 
 <div class="hero-image">
   <div class="hero-text">
+  
+  <h2>Welcome  <%=session.getAttribute("userid")%></h2>
     <h1 style="font-size:50px">Manage Inventory</h1>
     <h2>Stay Stocked</h2>
-    <a href="View.jsp"><button>View Available Products</button></a>
+    <a class="homelink"href="View.jsp">View Available Products</a>
   </div>
 </div>
+
+
+<%
+    }
+%>
+
+
 
 </body>
 </html>

@@ -233,10 +233,10 @@ catch(Exception e)
 <ul class="topnav">
 
    <li ><a class="active" href="#about">Log Out</a></li>
-   <li><a href="#news">Search Product</a></li>
+   <li><a href="searchProduct.jsp">Search Product</a></li>
   <li><a class="active" href="#news">View Product</a></li>
   <li><a  href="AddPro.jsp">Add Products</a></li>
-  <li><a  href="Home.jsp">Home</a></li>
+  <li><a  href="home.jsp">Home</a></li>
   <li class="right"><a href="Home.jsp">Enterprise Management System</a></li>
 </ul>
 
@@ -270,7 +270,7 @@ while(resultSet.next()){
 <td><%=resultSet.getInt("Pquant") %></td>
 <td><%=resultSet.getDouble("Pprice") %></td>
 <td><a class="tableLinksUp" href="updated.jsp?id=<%=resultSet.getString("PID")%>"> Update</a></td>
-<td><a class="tableLinksDel" href="?delete=<%=resultSet.getString("PID")%>"> Update</a></td>
+<td><a class="tableLinksDel" href="?delete=<%=resultSet.getString("PID")%>"> Delete</a></td>
 </tr>
 <%
 }

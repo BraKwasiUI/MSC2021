@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Login</title>
 </head>
 <body>
 <%@ page import ="java.sql.*" %>
@@ -18,15 +18,18 @@
         pst.setString(1, username);
         pst.setString(2, password);
         ResultSet rs = pst.executeQuery();                        
-        if(rs.next())           
-        response.sendRedirect("home.jsp"); 
-        else
-           out.println("Invalid login credentials"); 
-                       
+        if(rs.next())   {  
+       	session.setAttribute("userid", username);
+        response.sendRedirect("home.jsp"); }
+        else{
+           out.println("Invalid login credentials");
+           ;
+        }          
    }
    catch(Exception e){       
        out.println("Something went wrong !! Please try again");       
    }      
 %>
 </body>
+<a href="index.jsp">Enter Correct Credentials</a>
 </html>

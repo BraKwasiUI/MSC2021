@@ -276,10 +276,10 @@ a.tableLinksUp{
 
 <ul class="topnav">
 
-   <li ><a class="active" href="#about">Log Out</a></li>
-   <li><a href="#news">Search Product</a></li>
+   <li ><a class="active" href="logout.jsp">Log Out</a></li>
+   <li><a class="active" href="searchProduct">Search Product</a></li>
   <li><a href="View.jsp">View Product</a></li>
-  <li><a class="active" href="AddPro.jsp">Add Products</a></li>
+  <li><a  href="AddPro.jsp">Add Products</a></li>
   <li><a  href="home.jsp">Home</a></li>
   <li class="right"><a href="home.jsp">Enterprise Management System</a></li>
 </ul>
@@ -330,7 +330,7 @@ while(resultSet.next()){
 <td><%=resultSet.getInt("Pquant") %></td>
 <td><%=resultSet.getDouble("Pprice") %></td>
 <td><a class="tableLinksUp" href="updated.jsp?id=<%=resultSet.getString("PID")%>"> Update</a></td>
-<td><a class="tableLinksDel" href="?delete=<%=resultSet.getString("PID")%>"> Update</a></td>
+<td><a class="tableLinksDel" href="?delete=<%=resultSet.getString("PID")%>"> Delete</a></td>
 </tr>
 <%
 }

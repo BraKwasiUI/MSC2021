@@ -25,6 +25,7 @@ Statement st=conn.createStatement();
 
 int i=st.executeUpdate("insert into products(PID,Pname,Pcat,Pquant,Pprice)values('"+id+"','"+name+"','"+category+"','"+quantity+"','"+price+"')");
 out.println("Data is successfully inserted!");
+response.sendRedirect("AddPro.jsp");
 }
 catch(Exception e)
 {
