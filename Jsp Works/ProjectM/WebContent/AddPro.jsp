@@ -171,9 +171,9 @@ ul.topnav li a.title {
   <div class="form">
   <h2>Add Product</h2> 
   <hr>
-   <table>
-    <form class="login-form" action="login.jsp" method="POST" >
-     
+   
+    <form class="login-form" action="product.jsp" method="POST" >
+    <table> 
     <tr>
     <td>
     <h3>ID</h3>
@@ -192,26 +192,25 @@ ul.topnav li a.title {
       <input type="text" name="Pcat"/>
      </td>
      <td>
-     <h3>Price</h3>
-      <input type="text" name="Pprice"/>
+     <h3>Quantity</h3>
+      <input type="text" name="Pquant"/>
       </td>
      
       </tr>
-         <tr style="text-center">
+         <tr>
     <td  >
-    <h3>Quantity</h3>
-      <input type="text" name="Pquant"/>
+    <h3>Price</h3>
+      <input type="text" name="Pprice"/>
      </td> 
       </tr>
       
       <tr>
       <td>
-      <button>login</button>
+      <button>Submit</button>
      </td> 
       </tr>
-    
-         </form>
-     </table>    
+     </table>
+     </form>    
   </div>
 </div>
 
