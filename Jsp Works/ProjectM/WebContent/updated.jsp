@@ -31,8 +31,7 @@ try
 		pstmt.executeUpdate(); //execute query
 		
 		con.close(); //connection close
-
-		out.println("Update Successfully...! Click Back link."); //after update record successfully message
+		 response.sendRedirect("update.jsp");
 	}	
 	
 }
@@ -40,7 +39,6 @@ catch(Exception e)
 {
 	out.println(e);
 }
-
 %>
 
 
@@ -120,17 +118,13 @@ catch(Exception e)
 		%>	
 		</table>
 		
-		<center>
-				<h1><a href="index.jsp">Back</a></h1>
-		</center>
+		
 		
 	</form>
 
 	</div>
 	
-		<center>
-			<h2><a href="https://onlyxscript.blogspot.in/2018/01/insert-update-delete-using-jsp-and-mysql.html">tutorial link</a></h2>	
-		</center>
+		
 
 </body>
 

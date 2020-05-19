@@ -23,7 +23,7 @@ ResultSet resultSet = null;
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 
-<style>
+
 .login-page {
   width: 700px;
   padding: 10% 0 0;
@@ -181,6 +181,26 @@ th{
 color:#563D64;
 }
 
+
+
+a.tableLinksDel{
+  background-color: #f44336;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a.tableLinksUp{
+  background-color: #43A047;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
 </style>
 
 </head>
@@ -192,12 +212,10 @@ color:#563D64;
    <li><a href="#news">Search Product</a></li>
   <li><a class="active" href="#news">View Product</a></li>
   <li><a  href="AddPro.jsp">Add Products</a></li>
-  <li><a  href="#home">Home</a></li>
-  <li class="right"><a href="#contact">Enterprise Management System</a></li>
+  <li><a  href="Home.jsp">Home</a></li>
+  <li class="right"><a href="Home.jsp">Enterprise Management System</a></li>
 </ul>
 
-<br>
-<br>
 <div class="login-page">
   <div class="form">
   <h2>Available Products</h2> 
@@ -227,8 +245,8 @@ while(resultSet.next()){
 <td><%=resultSet.getString("Pcat") %></td>
 <td><%=resultSet.getInt("Pquant") %></td>
 <td><%=resultSet.getDouble("Pprice") %></td>
-<td><a href="updated.jsp?id=<%=resultSet.getString("PID")%>">Update</a></td>
-<td><button>Delete</button></td>
+<td><a class="tableLinksUp" href="updated.jsp?id=<%=resultSet.getString("PID")%>"> Update</a></td>
+<td><a class="tableLinksDel" href="#?id=<%=resultSet.getString("PID")%>"> Update</a></td>
 </tr>
 <%
 }

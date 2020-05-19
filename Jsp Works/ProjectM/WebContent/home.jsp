@@ -71,7 +71,7 @@ ul.topnav li a.title {
 
    <li ><a class="active" href="#about">Log Out</a></li>
    <li><a href="#news">Search Product</a></li>
-  <li><a href="#news">View Product</a></li>
+  <li><a href="View.jsp">View Product</a></li>
   <li><a href="AddPro.jsp">Add Products</a></li>
   <li><a class="active" href="#home">Home</a></li>
   <li class="right"><a href="#contact">Enterprise Management System</a></li>
@@ -82,7 +82,7 @@ ul.topnav li a.title {
   <div class="hero-text">
     <h1 style="font-size:50px">Manage Inventory</h1>
     <h2>Stay Stocked</h2>
-    <button>View Available Products</button>
+    <a href="View.jsp"><button>View Available Products</button></a>
   </div>
 </div>
 

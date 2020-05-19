@@ -1,24 +1,39 @@
+ <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page import="java.sql.*" %>
+<%@ page import="java.io.*" %>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
-<%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
- 
-<!DOCTYPE html>
+<%
+String id = request.getParameter("PID");
+String driver = "com.mysql.jdbc.Driver";
+
+try {
+Class.forName(driver);
+} catch (ClassNotFoundException e) {
+e.printStackTrace();
+}
+Statement statement = null;
+ResultSet resultSet = null;
+%>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
+
+
 .login-page {
-  width: 360px;
-  padding: 8% 0 0;
+  width: 700px;
+  padding: 10% 0 0;
   margin: auto;
 }
 .form {
   position: relative;
   z-index: 1;
   background: #FFFFFF;
-  max-width: 360px;
+  max-width: 700px;
   margin: 0 auto 100px;
   padding: 45px;
   text-align: center;
@@ -154,12 +169,39 @@ ul.topnav li a.title {
 }
 
 @media screen and (max-width: 600px) {
-  div.login-page,form.login-form{
-    width: 100%
+  table.tab,div.login-page,form.login-form{
+    width: 100%;
+    
   }
+ 
   
 }
+tr:nth-child(even){background-color: #f2f2f2}
+th{
+color:#563D64;
+}
+
+
+a.tableLinksDel{
+  background-color: #f44336;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a.tableLinksUp{
+  background-color: #43A047;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
 </style>
+
 </head>
 <body>
 
@@ -167,100 +209,56 @@ ul.topnav li a.title {
 
    <li ><a class="active" href="#about">Log Out</a></li>
    <li><a href="#news">Search Product</a></li>
-  <li><a href="#news">View Product</a></li>
-  <li><a class="active" href="AddPro.jsp">Add Products</a></li>
-  <li><a  href="#home">Home</a></li>
+  <li><a class="active" href="View.jsp">View Product</a></li>
+  <li><a  href="AddPro.jsp">Add Products</a></li>
+  <li><a  href="Home.jsp">Home</a></li>
   <li class="right"><a href="#contact">Enterprise Management System</a></li>
 </ul>
 
-
-
-<%
-		try
-		{
-			Class.forName("com.mysql.jdbc.Driver"); //load driver  
-		
-			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/ProjectM?autoReconnect=true&useSSL=false","root",""); // create connection  
-	
-			if(request.getParameter("PID")!=null) 
-			{
-				String id=request.getParameter("PID");
-		
-				String PID,Pname,Pcat;
-				int Pquant;
-				double Pprice;
-		
-				PreparedStatement pstmt=null; // create statement
-				
-				pstmt=con.prepareStatement("select * from person where id=?"); // sql select query
-				pstmt.setString(1,id);
-				ResultSet rs=pstmt.executeQuery(); // execute query store in resultset object rs.
-				
-				while(rs.next()) 
-				{
-					PID=rs.getString(1);
-					Pname=rs.getString(2);
-					Pcat=rs.getString(3);
-					Pquant=rs.getInt(4);
-					Pprice=rs.getDouble(5);
-					
-			%>
-
 <div class="login-page">
   <div class="form">
-  <h2>Add Product</h2> 
+  <h4>Update Successful</h4>
+  <h2>Available Products</h2> 
   <hr>
-   
-    <form class="login-form" action="productUdate.jsp" method="POST" >
-    <table> 
-    <tr>
-    <td>
-    <h3>ID</h3>
-      <input type="hidden" name="PID" value="<%=PID%>"/>
-     </td>
-     <td>
-     <h3>Name</h3>
-      <input type="text" name="Pname" value="<%=Pname%>"/>
-      </td>
-     
-      </tr>
-      
-       <tr>
-    <td>
-    <h3>Category</h3>
-      <input type="text" name="Pcat" value="<%=Pcat%>"/>
-     </td>
-     <td>
-     <h3>Quantity</h3>
-      <input type="text" name="Pquant" value="<%=Pquant%>"/>
-      </td>
-     
-      </tr>
-         <tr>
-    <td  >
-    <h3>Price</h3>
-      <input type="text" name="Pprice" value="<%=Pprice%>"/>
-     </td> 
-      </tr>
-      
-      <tr>
-      <td>
-      <button>Update</button>
-     </td> 
-      </tr>
-     </table>
-     </form>    
+    <form class="login-form"  >
+    
+<table border=".5" class="tab"  >
+<tr>
+<th>Product ID</th>
+<th>Product Name</th>
+<th>Product Category </th>
+<th>Quantity </th>
+<th> Price Per Unit  </th>
+<th> Action </th>
+<th> Action </th>
+</tr>
+<%
+try{
+	Connection connection =  DriverManager.getConnection("jdbc:mysql://localhost:3306/ProjectM?autoReconnect=true&useSSL=false","root","");
+statement=connection.createStatement();
+String sql ="select * from products";
+resultSet = statement.executeQuery(sql);
+while(resultSet.next()){
+%>
+<tr>
+<td><%=resultSet.getString("PID") %></td>
+<td><%=resultSet.getString("Pname") %></td>
+<td><%=resultSet.getString("Pcat") %></td>
+<td><%=resultSet.getInt("Pquant") %></td>
+<td><%=resultSet.getDouble("Pprice") %></td>
+<td><a class="tableLinksUp" href="updated.jsp?id=<%=resultSet.getString("PID")%>"> Update</a></td>
+<td><a class="tableLinksDel" href="#?id=<%=resultSet.getString("PID")%>"> Update</a></td>
+</tr>
+<%
+}
+connection.close();
+} catch (Exception e) {
+e.printStackTrace();
+}
+%>
+</table>
+   </form>    
   </div>
 </div>
-
-<%
-				}
-			}
-		}
-		catch(Exception e)
-		{
-			out.println(e);
-		}
-		%>	
 </body>
-</html>
+</html> 

@@ -161,9 +161,9 @@ ul.topnav li a.title {
 
    <li ><a class="active" href="#about">Log Out</a></li>
    <li><a href="#news">Search Product</a></li>
-  <li><a href="#news">View Product</a></li>
+  <li><a href="View.jsp">View Product</a></li>
   <li><a class="active" href="AddPro.jsp">Add Products</a></li>
-  <li><a  href="#home">Home</a></li>
+  <li><a  href="home.jsp">Home</a></li>
   <li class="right"><a href="#contact">Enterprise Management System</a></li>
 </ul>
 
