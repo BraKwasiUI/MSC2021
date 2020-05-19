@@ -21,7 +21,8 @@
         if(rs.next())           
         response.sendRedirect("home.jsp"); 
         else
-           out.println("Invalid login credentials");            
+           out.println("Invalid login credentials"); 
+                       
    }
    catch(Exception e){       
        out.println("Something went wrong !! Please try again");       

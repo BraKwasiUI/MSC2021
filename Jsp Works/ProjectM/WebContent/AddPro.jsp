@@ -1,17 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login</title>
-<script>
-$('.message a').click(function(){
-   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
-});
-</script>
-
 <style>
-
 .login-page {
   width: 360px;
   padding: 8% 0 0;
@@ -113,31 +104,117 @@ body {
 h3{ font-size:18px;}
 h1,h2,h3,h4,h5,h6{ color:#563D64;}
 
+
+body {margin: 0;}
+li {
+  border-right: 1px solid #bbb;
+}
+
+
+ul.topnav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  
+  
+}
+
+ul.topnav li {float: right;}
+
+ul.topnav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul.topnav li a:hover:not(.active) {background-color: #111;}
+
+ul.topnav li a.active {background-color: #4CAF50;}
+
+ul.topnav li.right {float: left;
+font-weight: bold;}
+
+@media screen and (max-width: 600px) {
+  ul.topnav li.right, 
+  ul.topnav li {float: none;}
+}
+
+ul.topnav li a.title {
+  font-weight: bold; 
+}
+
 @media screen and (max-width: 600px) {
   div.login-page,form.login-form{
     width: 100%
   }
   
 }
-
 </style>
 </head>
-
 <body>
+
+<ul class="topnav">
+
+   <li ><a class="active" href="#about">Log Out</a></li>
+   <li><a href="#news">Search Product</a></li>
+  <li><a href="#news">View Product</a></li>
+  <li><a class="active" href="AddPro.jsp">Add Products</a></li>
+  <li><a  href="#home">Home</a></li>
+  <li class="right"><a href="#contact">Enterprise Management System</a></li>
+</ul>
+
 <div class="login-page">
   <div class="form">
-  <h2>Manager Login</h2> 
-  <hr>  
+  <h2>Add Product</h2> 
+  <hr>
+   <table>
     <form class="login-form" action="login.jsp" method="POST" >
-    <h3>Enter Username</h3>
-      <input type="text" name="username"/>
-     <h3>Enter Password</h3>
-      <input type="password" name="password"/>
+     
+    <tr>
+    <td>
+    <h3>ID</h3>
+      <input type="text" name="PID"/>
+     </td>
+     <td>
+     <h3>Name</h3>
+      <input type="text" name="Pname"/>
+      </td>
+     
+      </tr>
+      
+       <tr>
+    <td>
+    <h3>Category</h3>
+      <input type="text" name="Pcat"/>
+     </td>
+     <td>
+     <h3>Price</h3>
+      <input type="text" name="Pprice"/>
+      </td>
+     
+      </tr>
+         <tr style="text-center">
+    <td  >
+    <h3>Quantity</h3>
+      <input type="text" name="Pquant"/>
+     </td> 
+      </tr>
+      
+      <tr>
+      <td>
       <button>login</button>
+     </td> 
+      </tr>
+    
          </form>
+     </table>    
   </div>
 </div>
+
+
 </body>
-
-
 </html>
