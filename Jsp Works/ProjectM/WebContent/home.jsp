@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>Home</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 body {margin: 0;}
@@ -73,8 +74,8 @@ ul.topnav li a.title {
    <li><a href="#news">Search Product</a></li>
   <li><a href="View.jsp">View Product</a></li>
   <li><a href="AddPro.jsp">Add Products</a></li>
-  <li><a class="active" href="#home">Home</a></li>
-  <li class="right"><a href="#contact">Enterprise Management System</a></li>
+  <li><a class="active" href="home.jsp">Home</a></li>
+  <li class="right"><a href="home.jsp">Enterprise Management System</a></li>
 </ul>
 
 

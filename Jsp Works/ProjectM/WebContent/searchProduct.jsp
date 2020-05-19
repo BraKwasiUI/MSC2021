@@ -24,16 +24,87 @@ ResultSet resultSet = null;
 <style>
 
 
-.login-page {
+.login-page-s {
   width: 700px;
-  padding: 10% 0 0;
+  padding: 1% 0 0;
+  margin: auto;
+}
+.form-s {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 700px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form-s input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.form-s button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4CAF50;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+.form-s button:hover,.form button:active,.form button:focus {
+  background: #43A047;
+}
+.form .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
+}
+.form-s .message a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+.form-s .register-form {
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.login-page {
+  width: 360px;
+  padding: 8% 0 0;
   margin: auto;
 }
 .form {
   position: relative;
   z-index: 1;
   background: #FFFFFF;
-  max-width: 700px;
+  max-width: 360px;
   margin: 0 auto 100px;
   padding: 45px;
   text-align: center;
@@ -169,19 +240,16 @@ ul.topnav li a.title {
 }
 
 @media screen and (max-width: 600px) {
-  table.tab,div.login-page,form.login-form{
-    width: 100%;
-    
+  div.login-page-s,div.login-page,form.login-form,form.login-form-s{
+    width: 100%
   }
- 
   
 }
+
 tr:nth-child(even){background-color: #f2f2f2}
 th{
 color:#563D64;
 }
-
-
 
 a.tableLinksDel{
   background-color: #f44336;
@@ -200,51 +268,42 @@ a.tableLinksUp{
   text-decoration: none;
   display: inline-block;
 }
-
 </style>
-<title>Products</title>
+<title>Search Product</title>
+
 </head>
 <body>
-<%
-try
-{	
-	Class.forName("com.mysql.jdbc.Driver");  //load driver 
-	
-	Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/ProjectM?autoReconnect=true&useSSL=false","root","");   //create connection 
 
-	if(request.getParameter("delete")!=null)
-	{
-		String did=request.getParameter("delete");
-		
-		PreparedStatement pstmt=null; //create statement
-		
-		pstmt=con.prepareStatement("delete from products where PID=? "); //sql delete query
-		pstmt.setString(1,did);
-		pstmt.executeUpdate(); //execute query
-		
-		con.close(); //close connection
-	}
-}
-catch(Exception e)
-{
-	out.println(e);
-}
-%>
 <ul class="topnav">
 
    <li ><a class="active" href="#about">Log Out</a></li>
    <li><a href="#news">Search Product</a></li>
-  <li><a class="active" href="#news">View Product</a></li>
-  <li><a  href="AddPro.jsp">Add Products</a></li>
-  <li><a  href="Home.jsp">Home</a></li>
-  <li class="right"><a href="Home.jsp">Enterprise Management System</a></li>
+  <li><a href="View.jsp">View Product</a></li>
+  <li><a class="active" href="AddPro.jsp">Add Products</a></li>
+  <li><a  href="home.jsp">Home</a></li>
+  <li class="right"><a href="home.jsp">Enterprise Management System</a></li>
 </ul>
 
 <div class="login-page">
   <div class="form">
-  <h2>Available Products</h2> 
+  <h2>Search Product</h2> 
   <hr>
-    <form class="login-form"  >
+   
+    <form class="login-form" action="searchProduct.jsp" method="POST" >
+    
+    <h3>Enter Product Name</h3>
+      <input type="text" name="Spname"/>
+      <button>Search</button>
+    
+     </form>    
+  </div>
+</div>
+
+<div class="login-page-s">
+  <div class="form-s">
+  <h2>Product Found</h2> 
+  <hr>
+    <form class="login-form-s"  >
 <table border=".5" class="tab"  >
 <tr>
 <th>Product ID</th>
@@ -259,7 +318,8 @@ catch(Exception e)
 try{
 	Connection connection =  DriverManager.getConnection("jdbc:mysql://localhost:3306/ProjectM?autoReconnect=true&useSSL=false","root","");
 statement=connection.createStatement();
-String sql ="select * from products";
+String sid=request.getParameter("Spname");
+String sql ="select * from products where Pname='"+sid+"' ";
 resultSet = statement.executeQuery(sql);
 while(resultSet.next()){
 %>
@@ -283,5 +343,6 @@ e.printStackTrace();
    </form>    
   </div>
 </div>
+
 </body>
-</html> 
+</html>

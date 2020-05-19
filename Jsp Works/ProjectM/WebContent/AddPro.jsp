@@ -154,6 +154,8 @@ ul.topnav li a.title {
   
 }
 </style>
+<title>Add Products</title>
+
 </head>
 <body>
 
@@ -164,7 +166,7 @@ ul.topnav li a.title {
   <li><a href="View.jsp">View Product</a></li>
   <li><a class="active" href="AddPro.jsp">Add Products</a></li>
   <li><a  href="home.jsp">Home</a></li>
-  <li class="right"><a href="#contact">Enterprise Management System</a></li>
+  <li class="right"><a href="home.jsp">Enterprise Management System</a></li>
 </ul>
 
 <div class="login-page">

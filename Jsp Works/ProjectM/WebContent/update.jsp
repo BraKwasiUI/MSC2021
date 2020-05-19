@@ -204,6 +204,31 @@ a.tableLinksUp{
 
 </head>
 <body>
+<% 
+try
+{	
+	Class.forName("com.mysql.jdbc.Driver");  //load driver 
+	
+	Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/ProjectM?autoReconnect=true&useSSL=false","root","");   //create connection 
+
+	if(request.getParameter("delete")!=null)
+	{
+		String did=request.getParameter("delete");
+		
+		PreparedStatement pstmt=null; //create statement
+		
+		pstmt=con.prepareStatement("delete from products where PID=? "); //sql delete query
+		pstmt.setString(1,did);
+		pstmt.executeUpdate(); //execute query
+		
+		con.close(); //close connection
+	}
+}
+catch(Exception e)
+{
+	out.println(e);
+}
+%>
 
 <ul class="topnav">
 
@@ -247,7 +272,7 @@ while(resultSet.next()){
 <td><%=resultSet.getInt("Pquant") %></td>
 <td><%=resultSet.getDouble("Pprice") %></td>
 <td><a class="tableLinksUp" href="updated.jsp?id=<%=resultSet.getString("PID")%>"> Update</a></td>
-<td><a class="tableLinksDel" href="#?id=<%=resultSet.getString("PID")%>"> Update</a></td>
+<td><a class="tableLinksDel" href="?delete=<%=resultSet.getString("PID")%>"> Update</a></td>
 </tr>
 <%
 }
