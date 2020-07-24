@@ -41,6 +41,8 @@ printf("\n\nDo you want to decrypt the message?");
 printf("\nEnter 1 for yes and 0 for No: ");    
 scanf("%d",&choice);
 
+
+
 switch(choice){
 	case 1:
 		
@@ -53,7 +55,11 @@ switch(choice){
 		 if (c>='a'&&c<='z'){
 		 	asciiValue = c;
 		 	int ci=((asciiValue-97)-dsecretKey)%26+97;
-		 	c=ci;
+		 				
+			 c=ci;
+			 if(c < 'a'){
+				c = c + 'z' - 'a' + 1;
+			}
 		 	plainT[i]=c;
 		 }
 		  
@@ -61,7 +67,11 @@ switch(choice){
 		 else  if (c>='A'&&c<='Z'){
 		 	asciiValue = c;
 		 	int ci=((asciiValue-65)-dsecretKey)%26+65;
+		 	
 		 	c=ci;
+		 	if(c < 'A'){
+				c = c + 'Z' - 'A' + 1;
+			}
 		 	plainT[i]=c;
 		 }
 		  
@@ -76,6 +86,20 @@ switch(choice){
 		printf("Bad input");
 		
 }
+
+
+
+	
+	
+	
+	
+	
+	return 0;
+    
+}
+
+
+
 
 
 
