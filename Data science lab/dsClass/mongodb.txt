@@ -1,0 +1,68 @@
+mongo "mongodb+srv://cluster0.vytnh.mongodb.net/<dbname>" --username userJay
+
+pass:mongodb@2020
+
+#Creating database
+use studentsdb
+
+#creating collections on the fly
+db.Studentdata.insert([{
+  name: "Jesse",
+  age: 45,
+  regno: "P191301"
+},
+{
+  name: "Kapil",
+  age: 22,
+  regno: "P191302"
+},
+{
+  name: "Kayal",
+  age: 23,
+  regno: "P191303"
+},
+{
+  name: "Linet",
+  age: 25,
+  regno: "P191304"
+},
+{
+  name: "Veena",
+  age: 23,
+  regno: "P191305"
+},
+{
+  name: "Thenm",
+  age: 25,
+  regno: "P191306"
+}
+])
+
+#first creating the collection 
+db.createCollection("students")
+
+#checking if insertion was successfull
+db.Studentdata.find()
+db.Studentdata.find().pretty()
+
+#to update a document in a given collection
+#db.collection_name.update(criteria, update_data)
+db.Studentdata.update({"name":"Jesse"},{$set:{"name":"Akwasi Jesse"}})
+
+#to delete a document
+#db.collection_name.remove(delete_criteria)
+db.Studentdata.remove({"name": "Veena"})
+
+#query a document
+db.Studentdata.find({name : "Thenm"}).pretty()
+
+#query with some criteria
+db.collection_name.fin({"field_name":{$gt:criteria_value}}).pretty()
+
+db.Studentdata.find({"age":{$gt:22}}).pretty()
+
+#making projections help to get only field specific info in the documents of the collection
+#syntax
+db.collection_name.find({},{field_key:1 or 0})
+ db.Studentdata.find({}, {"_id": 0, "student_id": 1})
+
